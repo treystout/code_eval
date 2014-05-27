@@ -26,18 +26,20 @@ func FizzBuzz(multipleA int, multipleB int, limit int) {
 	if limit < 0 {
 		panic("limit must be greater than 0!")
 	}
+	// a place to hold output
+	var out []string
 	for i := 1; i <= limit; i++ {
-		if i%(multipleA*multipleB) == 0 {
-			fmt.Printf("FB ")
+		if i%multipleA == 0 && i%multipleB == 0 {
+			out = append(out, "FB")
 		} else if i%multipleA == 0 {
-			fmt.Printf("F ")
+			out = append(out, "F")
 		} else if i%multipleB == 0 {
-			fmt.Printf("B ")
+			out = append(out, "B")
 		} else {
-			fmt.Printf("%d ", i)
+			out = append(out, fmt.Sprint(i))
 		}
 	}
-	fmt.Printf("\n")
+	fmt.Printf("%s\n", strings.Join(out, " "))
 }
 
 func check(err error) {
